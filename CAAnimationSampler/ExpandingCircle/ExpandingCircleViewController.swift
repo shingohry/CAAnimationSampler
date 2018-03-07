@@ -41,13 +41,10 @@ class ExpandingCircleView: UIView {
         let inset = (bounds.width / 2) - (startSize.width / 2)
         let startRect = bounds.insetBy(dx: inset,
                                        dy: inset)
-        let startPath = UIBezierPath(roundedRect: startRect,
-                                     cornerRadius: startRect.width / 2).cgPath
+        let startPath = UIBezierPath(ovalIn: startRect).cgPath
         circleLayer.path = startPath
         
-        let endRect = bounds
-        let endPath = UIBezierPath(roundedRect: endRect,
-                                   cornerRadius: endRect.width / 2).cgPath
+        let endPath = UIBezierPath(ovalIn: bounds).cgPath
         
         let pathAnimation = CABasicAnimation(keyPath: "path")
         pathAnimation.toValue = endPath
